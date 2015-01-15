@@ -1,4 +1,4 @@
-class Letter
+﻿class Letter
 {
     private let letter: Character;
     private var isVovel: Boolean;
@@ -38,7 +38,13 @@ class Alphabet
     {
         self.letters = letters;
     }
-    
+     var Letters:[Letter]
+ 
+   {
+       
+ get { return letters;}
+   
+ }
 }
 
 class Words
