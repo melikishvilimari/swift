@@ -1,0 +1,306 @@
+class Letter
+{
+    private let letter: Character;
+    private var isVovel: Boolean;
+    private var bookMark: Boolean;
+    private var transcription : String;
+    
+    init(letter : Character, isVovel: Boolean, transcription : String)
+    {
+        self.letter = letter;
+        self.isVovel = isVovel;
+        self.bookMark = 0;
+        self.transcription = transcription;
+    }
+    
+    var Letter: Character
+    {
+        get { return letter; }
+    }
+    
+    var IsVovel: Boolean
+    {
+        get { return isVovel;}
+    }
+    
+    var BookMark:Boolean 
+    {
+        get { return bookMark; } 
+        set { bookMark = newValue; }
+    }
+    
+}
+
+class Alphabet
+{
+   private var letters : [Letter];
+    init(letters : [Letter])
+    {
+        self.letters = letters;
+    }
+    
+}
+
+class Words
+{
+     var firstWord : String;
+     var secondWord : String;
+    
+    init(firstWord : String, secondWord: String)
+    {
+        self.firstWord = firstWord;
+        self.secondWord = secondWord;
+    }
+    
+    var FirstWord : String
+    {
+        get { return firstWord;}
+        set { self.firstWord = newValue; }
+    }
+    var SecondWord : String
+    {
+        get { return secondWord; }
+        set { self.secondWord = newValue; }
+    }
+}
+class PairLetters{
+    var firstLetter: String;
+    var secondLetter: String;
+     var transcription: String;
+     var isVovel:Boolean;
+     
+     init(firstLetter : String, secondLetter: String, transcription: String,isVovel:Boolean)
+    {
+        self.firstLetter = firstLetter;
+        self.secondLetter = secondLetter;
+        self.transcription = transcription;
+        self.isVovel = isVovel;
+    }
+    
+    var FirstLetter : String
+    {
+        get { return firstLetter;}
+        set { self.firstLetter = newValue; }
+    }
+    var SecondLetter : String
+    {
+        get { return secondLetter; }
+        set { self.secondLetter = newValue; }
+    }
+    
+    var Transcripption : String
+    {
+        get { return transcription;}
+        set { self.transcription = newValue; }
+    }
+    
+    var IsVovel : Boolean
+    {
+        get { return isVovel;}
+        set { self.isVovel = newValue; }
+    }
+    
+}
+
+
+
+
+
+class GeoEngDictionary
+{
+   var firstAlphabet : Alphabet;
+   var secondAlphabet : Alphabet;
+
+   var words:[Words] = [];
+   
+   init(firstAlphabet: Alphabet, secondAlphabet: Alphabet)
+   {
+       self.firstAlphabet = firstAlphabet;
+       self.secondAlphabet = secondAlphabet;
+  
+   }
+   
+   func addWords(firstWord: String, secondWord : String)
+   {
+      words += [Words(firstWord : firstWord,secondWord : secondWord)];
+      
+   }
+   
+   func SearchWords(word : String, language : String) -> [Words]
+   {
+       var getWords: [Words]=[];
+       
+       for w in words
+       {
+          if(language == "Eng")
+          {
+            if (w.FirstWord.rangeOfString(word) != nil)
+          
+               { getWords += [w];}
+           }
+           else { 
+               if(w.SecondWord.rangeOfString(word) != nil)
+               { getWords += [w];}
+           }
+       }
+       return getWords;
+   }
+   
+   func SearchInEngAlphabet(word: String) -> [Words] {
+        return SearchWords(word, language: "Geo");
+    }
+    
+    func SearchInGeoAlphabet(word: String) -> [Words] {
+        return SearchWords(word,language: "Eng");
+    }
+    
+}
+
+
+
+class GeoEngLetters
+{
+   var firstAlphabet : Alphabet;
+   var secondAlphabet : Alphabet;
+   var transcription: String;
+     var letters:[PairLetters] = [];
+   
+   init(firstAlphabet: Alphabet, secondAlphabet: Alphabet)
+   {
+       self.firstAlphabet = firstAlphabet;
+       self.secondAlphabet = secondAlphabet;
+       self.transcription = "";
+       
+   }
+   
+   func addLetters(firstLetter: String, secondLetter : String, transcription:String, isVovel : Boolean)
+   {
+      letters += [PairLetters(firstLetter : firstLetter,secondLetter : secondLetter, transcription : transcription, isVovel: isVovel)];
+      
+   }
+   
+   func SearchLetters(letter : String, language : String) -> [PairLetters]
+   {
+       var getLetters: [PairLetters]=[];
+       
+       for w in letters
+       {
+          if(language == "Eng")
+          {
+            if (w.FirstLetter.rangeOfString(letter) != nil)
+          
+               { getLetters += [w];}
+           }
+           else { 
+               if(w.SecondLetter.rangeOfString(letter) != nil)
+               { getLetters += [w];}
+           }
+       }
+       return getLetters;
+   }
+   
+   func SearchInEngLetters(letter: String) -> [PairLetters] {
+        return SearchLetters(letter, language: "Geo");
+    }
+    
+    func SearchInGeoLetters(letter: String) -> [PairLetters] {
+        return SearchLetters(letter,language: "Eng");
+    }
+    
+}
+
+class FillLetters
+{
+    
+    func getGeorgianLetters() -> [Letter]{
+        var letters: [Letter] = [];
+        return letters;
+    }
+    
+    func getEnglishLetters() -> [Letter]{
+        var letters: [Letter] = [];
+        return letters;
+    }
+}
+ var myletters = FillLetters()
+ 
+ 
+
+var georgian = Alphabet(letters: myletters.getGeorgianLetters());
+var english = Alphabet(letters: myletters.getEnglishLetters());
+
+var geoEngDictionary = GeoEngDictionary(firstAlphabet: georgian, secondAlphabet:english);
+
+geoEngDictionary.addWords("წყალი", secondWord: "water");
+geoEngDictionary.addWords("მზე", secondWord: "sun");
+geoEngDictionary.addWords("პატარა", secondWord: "little");
+geoEngDictionary.addWords("სირბილი", secondWord: "run");
+geoEngDictionary.addWords("სინათლე", secondWord: "light");
+geoEngDictionary.addWords("ბურთი", secondWord: "ball");
+geoEngDictionary.addWords("კედელი", secondWord: "wall");
+geoEngDictionary.addWords("წითელი", secondWord: "red");
+
+
+for i in geoEngDictionary.SearchInGeoAlphabet("სი") {
+    var string: String = i.FirstWord + " " + i.SecondWord;
+    println(string)
+}
+
+
+
+for i in geoEngDictionary.SearchInEngAlphabet("all") {
+    var string: String = i.SecondWord + " " + i.FirstWord;
+    println(string)
+}
+
+var geoEngLetters = GeoEngLetters(firstAlphabet: georgian, secondAlphabet: english);
+geoEngLetters.addLetters("ა",secondLetter:"a",transcription:"[a]",isVovel:0);
+geoEngLetters.addLetters("ბ",secondLetter:"b",transcription:"[b]",isVovel:1);
+geoEngLetters.addLetters("შ",secondLetter:"sh",transcription:"[S]",isVovel:1);
+geoEngLetters.addLetters("წ",secondLetter:"W",transcription:"[ts]",isVovel:1);
+geoEngLetters.addLetters("ჯ",secondLetter:"J",transcription:"[j]",isVovel:1);
+geoEngLetters.addLetters("ხ",secondLetter:"kh",transcription:"[kh]",isVovel:1);
+geoEngLetters.addLetters("ნ",secondLetter:"n",transcription:"[n]",isVovel:1);
+
+for i in geoEngLetters.SearchInGeoLetters("ა") {
+        var string: String = i.FirstLetter + " " + i.SecondLetter + " " + i.transcription ;
+    println(string)
+}
+
+for i in geoEngLetters.SearchInGeoLetters("შ") {
+       var string: String = i.FirstLetter + " " + i.SecondLetter + " " + i.transcription ;
+    println(string)
+}
+
+for i in geoEngLetters.SearchInEngLetters("b") {
+   
+    
+    var string: String = i.SecondLetter + " " + i.FirstLetter + " " + i.transcription ;
+    println(string)
+}
+
+
+for i in geoEngLetters.SearchInEngLetters("J") {
+   
+    
+    var string: String = i.SecondLetter + " " + i.FirstLetter + " " + i.transcription ;
+    println(string)
+}
+
+for i in geoEngLetters.SearchInEngLetters("n") {
+   
+    
+    var string: String = i.SecondLetter + " " + i.FirstLetter + " " + i.transcription ;
+    println(string)
+}
+
+
+
+
+
+
+
+
+
+
+
