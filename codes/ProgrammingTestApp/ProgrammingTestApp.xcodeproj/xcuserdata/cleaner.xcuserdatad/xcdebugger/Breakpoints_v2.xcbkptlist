@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ProgrammingTestApp/TestController.swift"
-            timestampString = "444767342.659337"
+            timestampString = "444777764.508145"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "updateUI()"
             landmarkType = "5">
          </BreakpointContent>

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TestController: UIViewController {
+class TestController: UIViewController, UIAlertViewDelegate {
 
-    var testManager = TestManager()
+    var testManager = TestManager(round: 4)
     @IBOutlet weak var lblTestCounter: UILabel!
     @IBOutlet weak var lblQuestion: UILabel!
     @IBOutlet weak var btnA: UIButton!
@@ -33,6 +33,7 @@ class TestController: UIViewController {
     @IBAction func btnDClick(sender: AnyObject) {
         getNextTest(3)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
@@ -44,7 +45,18 @@ class TestController: UIViewController {
     
     private func getNextTest(userIndex: Int){
         testManager.userAnswer(userIndex)
-        updateUI()
+        if(testManager.round != testManager.currentTestIndex) {
+            updateUI()
+        }
+        else {
+            let alertView = UIAlertController(title: "Your score is", message: "\(testManager.score) from \(testManager.round)", preferredStyle: .Alert)
+            alertView.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {
+                (action: UIAlertAction!) -> Void in
+                    self.testManager = TestManager(round: 4)
+                    self.updateUI()
+            }))
+            presentViewController(alertView, animated: true, completion: nil)
+        }
     }
     
     private func updateUI(){
@@ -53,7 +65,7 @@ class TestController: UIViewController {
         tbnC.setTitle(testManager.getCurrent().answers[2], forState: UIControlState.Normal)
         btnD.setTitle(testManager.getCurrent().answers[3], forState: UIControlState.Normal)
         lblQuestion.text = testManager.getCurrent().question
-        lblTestCounter.text = "10/\(testManager.currentTestIndex + 1)"
+        lblTestCounter.text = "\(testManager.currentTestIndex + 1)/\(testManager.round)"
     }
 
     /*
