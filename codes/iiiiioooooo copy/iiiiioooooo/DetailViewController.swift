@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var detailDescriptionLabel: UILabel!
 
+    @IBOutlet weak var imageView: UIImageView!
 
     var detailItem: AnyObject? {
         didSet {
@@ -27,7 +28,8 @@ class DetailViewController: UIViewController {
                 var name: String = detail.valueForKey("name")!.description
                 var surname: String = detail.valueForKey("surname")!.description
                 label.text = "\(name) \(surname)"
-                
+                self.imageView.image = UIImage(data: detail.valueForKey("photo")! as NSData)
+                //println(detail.valueForKey("photo")!.description)
             }
         }
     }

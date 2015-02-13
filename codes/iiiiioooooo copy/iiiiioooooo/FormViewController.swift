@@ -7,25 +7,45 @@
 //
 
 import UIKit
-
+import MobileCoreServices
 protocol FormViewControllerDelegate {
     func formControllerDidFinish(controller:FormViewController, model:FormModel)
 }
 
-class FormViewController: UIViewController {
+class FormViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var delegate: FormViewControllerDelegate?
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtSurname: UITextField!
     
+    let picker = UIImagePickerController()
+    
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBAction func shootPhoto(sender: UIBarButtonItem) {
+        picker.delegate = self
+        picker.allowsEditing = false
+        //picker.sourceType = UIImagePickerControllerSourceType.Camera
+        //picker.cameraCaptureMode = .Photo
+        picker.mediaTypes = [kUTTypeImage]
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    @IBAction func photoFromLibrary(sender: UIBarButtonItem) {
+        picker.allowsEditing = false
+        picker.sourceType = .PhotoLibrary
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    
     @IBAction func btnSave(sender: AnyObject) {
         if (delegate != nil) {
-            delegate!.formControllerDidFinish(self, model: FormModel(name: txtName.text, surname: txtSurname.text))
+            delegate!.formControllerDidFinish(self, model: FormModel(name: txtName.text, surname: txtSurname.text, image: imageView.image!))
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        picker.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -35,14 +55,16 @@ class FormViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        var chosenImage = info[UIImagePickerControllerOriginalImage] as UIImage //2
+        imageView.contentMode = .ScaleAspectFit //3
+        imageView.image = chosenImage //4
+        dismissViewControllerAnimated(true, completion: nil) //5
     }
-    */
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }

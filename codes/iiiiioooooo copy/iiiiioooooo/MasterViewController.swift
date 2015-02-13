@@ -42,6 +42,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         newManagedObject.setValue(NSDate(), forKey: "timeStamp")
         newManagedObject.setValue(model.Name, forKey: "name")
         newManagedObject.setValue(model.Surname, forKey: "surname")
+        newManagedObject.setValue(UIImageJPEGRepresentation(model.Image!, 1), forKey: "photo")
         
         // Save the context.
         var error: NSError? = nil

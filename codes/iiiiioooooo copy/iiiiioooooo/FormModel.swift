@@ -7,14 +7,17 @@
 //
 
 import Foundation
+import UIKit
 
 class FormModel {
     var Name: String = ""
     var Surname: String = ""
+    var Image: UIImage?
     
-    init(name: String, surname: String) {
+    init(name: String, surname: String, image: UIImage) {
         self.Name = name
         self.Surname = surname
+        self.Image = image
     }
     
 }
