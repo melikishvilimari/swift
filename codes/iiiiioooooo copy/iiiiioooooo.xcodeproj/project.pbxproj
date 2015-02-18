@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF49C54E1A94F8BC00835BE9 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF49C54D1A94F8BC00835BE9 /* CollectionViewCell.swift */; };
 		EF73D4F81A8A5DF000B0B0AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73D4F71A8A5DF000B0B0AB /* AppDelegate.swift */; };
 		EF73D4FB1A8A5DF000B0B0AB /* iiiiioooooo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF73D4F91A8A5DF000B0B0AB /* iiiiioooooo.xcdatamodeld */; };
 		EF73D4FD1A8A5DF000B0B0AB /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF73D4FC1A8A5DF000B0B0AB /* MasterViewController.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF49C54D1A94F8BC00835BE9 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewCell.swift; path = ../CollectionViewCell.swift; sourceTree = "<group>"; };
 		EF73D4F21A8A5DF000B0B0AB /* iiiiioooooo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iiiiioooooo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF73D4F61A8A5DF000B0B0AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF73D4F71A8A5DF000B0B0AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				EF73D4FC1A8A5DF000B0B0AB /* MasterViewController.swift */,
 				EF73D4FE1A8A5DF000B0B0AB /* DetailViewController.swift */,
 				EF73D51C1A8A683B00B0B0AB /* FormViewController.swift */,
+				EF49C54D1A94F8BC00835BE9 /* CollectionViewCell.swift */,
 				EF73D5001A8A5DF000B0B0AB /* Main.storyboard */,
 				EF73D5031A8A5DF000B0B0AB /* Images.xcassets */,
 				EF73D5051A8A5DF000B0B0AB /* LaunchScreen.xib */,
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF73D4F81A8A5DF000B0B0AB /* AppDelegate.swift in Sources */,
+				EF49C54E1A94F8BC00835BE9 /* CollectionViewCell.swift in Sources */,
 				EF73D4FB1A8A5DF000B0B0AB /* iiiiioooooo.xcdatamodeld in Sources */,
 				EF73D4FD1A8A5DF000B0B0AB /* MasterViewController.swift in Sources */,
 				EF73D51F1A8A6ADC00B0B0AB /* FormModel.swift in Sources */,
@@ -429,6 +433,7 @@
 				EF73D5181A8A5DF000B0B0AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF73D5191A8A5DF000B0B0AB /* Build configuration list for PBXNativeTarget "iiiiiooooooTests" */ = {
 			isa = XCConfigurationList;
@@ -437,6 +442,7 @@
 				EF73D51B1A8A5DF000B0B0AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

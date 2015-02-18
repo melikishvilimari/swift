@@ -16,11 +16,13 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var delegate: FormViewControllerDelegate?
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtSurname: UITextField!
-    
+    var image: UIImage?
+    //@IBOutlet var view: UIView!
+    //@IBOutlet weak var imageView: UIImageView!
     let picker = UIImagePickerController()
     
     
-    @IBOutlet weak var imageView: UIImageView!
+    
     
     @IBAction func shootPhoto(sender: UIBarButtonItem) {
         picker.delegate = self
@@ -39,7 +41,7 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func btnSave(sender: AnyObject) {
         if (delegate != nil) {
-            delegate!.formControllerDidFinish(self, model: FormModel(name: txtName.text, surname: txtSurname.text, image: imageView.image!))
+            delegate!.formControllerDidFinish(self, model: FormModel(name: txtName.text, surname: txtSurname.text, image: image!))
         }
     }
     
@@ -58,8 +60,10 @@ class FormViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         var chosenImage = info[UIImagePickerControllerOriginalImage] as UIImage //2
-        imageView.contentMode = .ScaleAspectFit //3
-        imageView.image = chosenImage //4
+        //imageView.contentMode = .ScaleAspectFit //3
+        //imageView.image = chosenImage //4
+        image = chosenImage
+        self.view.backgroundColor = UIColor(patternImage: chosenImage)
         dismissViewControllerAnimated(true, completion: nil) //5
     }
     
