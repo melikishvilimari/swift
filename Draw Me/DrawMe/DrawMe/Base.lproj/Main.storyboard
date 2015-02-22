@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XDC-u7-VjY">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="DrawMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="a4N-dE-g6i">
+                                <rect key="frame" x="188" y="86" width="118" height="31"/>
+                                <connections>
+                                    <action selector="lineWidthSlider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Kh1-lA-vvo"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RYI-0N-tmA">
+                                <rect key="frame" x="188" y="124" width="118" height="31"/>
+                                <connections>
+                                    <action selector="colorChangeSlider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="i5K-pt-sAZ"/>
+                                    <action selector="lineWidthSlider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="mfZ-iv-seJ"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line width" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asg-HZ-P11">
+                                <rect key="frame" x="16" y="95" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvG-U7-4Jm">
+                                <rect key="frame" x="16" y="133" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z8u-AK-rKW" customClass="DrawView" customModule="DrawMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="170" width="320" height="398"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Asg-HZ-P11" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="064-k5-w79"/>
+                            <constraint firstItem="a4N-dE-g6i" firstAttribute="leading" secondItem="Asg-HZ-P11" secondAttribute="trailing" constant="95" id="1mf-AY-0Iv"/>
+                            <constraint firstItem="a4N-dE-g6i" firstAttribute="trailing" secondItem="RYI-0N-tmA" secondAttribute="trailing" id="2Fn-es-hnK"/>
+                            <constraint firstItem="Z8u-AK-rKW" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="106" id="F9Y-vS-hE9"/>
+                            <constraint firstItem="hvG-U7-4Jm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="J52-aU-eEc"/>
+                            <constraint firstItem="Z8u-AK-rKW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="PfU-93-fmn"/>
+                            <constraint firstItem="a4N-dE-g6i" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Sbk-SZ-6Tv"/>
+                            <constraint firstItem="hvG-U7-4Jm" firstAttribute="top" secondItem="Asg-HZ-P11" secondAttribute="bottom" constant="17" id="WdU-Qt-eUp"/>
+                            <constraint firstItem="RYI-0N-tmA" firstAttribute="top" secondItem="a4N-dE-g6i" secondAttribute="bottom" constant="8" id="YFx-Dv-uFL"/>
+                            <constraint firstItem="Z8u-AK-rKW" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="fj4-eT-exI"/>
+                            <constraint firstItem="RYI-0N-tmA" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="hvv-IS-7M0"/>
+                            <constraint firstItem="Asg-HZ-P11" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="31" id="jkK-Za-wmx"/>
+                            <constraint firstItem="a4N-dE-g6i" firstAttribute="bottom" secondItem="Asg-HZ-P11" secondAttribute="bottom" id="lAe-7G-WlU"/>
+                            <constraint firstItem="a4N-dE-g6i" firstAttribute="leading" secondItem="RYI-0N-tmA" secondAttribute="leading" id="msu-Fv-xGH"/>
+                            <constraint firstItem="RYI-0N-tmA" firstAttribute="top" secondItem="a4N-dE-g6i" secondAttribute="bottom" constant="8" symbolic="YES" id="pER-CN-uuQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Z8u-AK-rKW" secondAttribute="trailing" id="shw-18-E6S"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Abo-y3-d3J">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="iyE-nJ-nNU">
+                            <connections>
+                                <action selector="clearView:" destination="vXZ-lx-hvc" id="IKL-aH-bDh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="auj-lz-Icf">
+                            <connections>
+                                <action selector="saveAsImage:" destination="vXZ-lx-hvc" id="skl-J7-JA4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="brushWidth" destination="a4N-dE-g6i" id="TiU-pG-KZO"/>
+                        <outlet property="colorSlider" destination="RYI-0N-tmA" id="Jg9-8V-hYP"/>
+                        <outlet property="customView" destination="Z8u-AK-rKW" id="yc1-Pl-jxU"/>
+                        <outlet property="saveViewImage" destination="auj-lz-Icf" id="ZeM-EC-KMS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1072" y="212"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xWI-4e-EWi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XDC-u7-VjY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vij-7D-wj1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="IJ8-vW-ivH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SnQ-aZ-DkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="540" y="212"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
